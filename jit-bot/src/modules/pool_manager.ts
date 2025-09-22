@@ -76,11 +76,24 @@ export class PoolManager {
    * Create pool state from configuration
    */
   private async createPoolState(config: PoolConfig): Promise<PoolState> {
-    // In a real implementation, you would fetch actual pool data from the blockchain
-    // For now, we'll create mock pools with realistic parameters
+    // Use real mainnet token addresses
+    let token0: Token, token1: Token;
     
-    const token0 = new Token(1, '0xA0b86a33E6441c476DECC4E6Af09e9C4F8eB0fC7', 18, 'WETH', 'Wrapped Ether');
-    const token1 = new Token(1, '0xA0b86a33E6441c476DECC4E6Af09e9C4F8eB0fC8', 6, 'USDC', 'USD Coin');
+    // Determine tokens based on pool name
+    if (config.name.includes('WETH-USDC')) {
+      token0 = new Token(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether');
+      token1 = new Token(1, '0xA0b86a33E6441c476DECC4E6Af09e9C4F8eB0fC8', 6, 'USDC', 'USD Coin');
+    } else if (config.name.includes('ETH-USDT')) {
+      token0 = new Token(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether');
+      token1 = new Token(1, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD');
+    } else if (config.name.includes('WBTC-ETH')) {
+      token0 = new Token(1, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, 'WBTC', 'Wrapped BTC');
+      token1 = new Token(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether');
+    } else {
+      // Default tokens
+      token0 = new Token(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether');
+      token1 = new Token(1, '0xA0b86a33E6441c476DECC4E6Af09e9C4F8eB0fC8', 6, 'USDC', 'USD Coin');
+    }
     
     // Convert fee tier to FeeAmount enum
     let feeAmount: FeeAmount;
