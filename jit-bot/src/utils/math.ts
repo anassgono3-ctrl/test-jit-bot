@@ -1,5 +1,5 @@
 import JSBI from 'jsbi';
-import { getSqrtRatioAtTick, getTickAtSqrtRatio, priceToTick, tickToPrice } from './math/tick_math';
+import { getSqrtRatioAtTick, getTickAtSqrtRatio, priceToTick, tickToPrice } from '../math/tick_math';
 import { 
   getLiquidityForAmount0, 
   getLiquidityForAmount1, 
@@ -8,8 +8,8 @@ import {
   getAmount1ForLiquidity,
   getAmountsForLiquidity,
   sqrt 
-} from './math/liquidity_math';
-import { priceToSqrtPriceX96, sqrtPriceX96ToPrice } from './math/price_math';
+} from '../math/liquidity_math';
+import { priceToSqrtPriceX96, sqrtPriceX96ToPrice } from '../math/price_math';
 
 /**
  * Precision math utilities for liquidity calculations
