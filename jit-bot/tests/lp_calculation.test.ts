@@ -8,18 +8,19 @@ describe('LP Calculation Module', () => {
   let mockSwapData: any;
   
   beforeEach(() => {
-    // Create mock tokens
-    const token0 = new Token(1, '0xA0b86a33E6441c476DECC4E6Af09e9C4F8eB0fC7', 18, 'WETH', 'Wrapped Ether');
-    const token1 = new Token(1, '0xA0b86a33E6441c476DECC4E6Af09e9C4F8eB0fC8', 6, 'USDC', 'USD Coin');
+    // Create mock tokens (using real token addresses for testing)
+    // WETH address is higher than USDT address, so we need to swap them for correct ordering
+    const token0 = new Token(1, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD');
+    const token1 = new Token(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, 'WETH', 'Wrapped Ether');
     
     // Create mock pool
     mockPool = new Pool(
       token0,
       token1,
       FeeAmount.MEDIUM,
-      '1771595571142957166768892000000000000000000000000000000', // sqrtPriceX96
+      '79228162514264337593543950336', // sqrtPriceX96 (approximately 1:1 ratio)
       '10272714827896220757', // liquidity
-      -74959 // tickCurrent
+      0 // tickCurrent (at 1:1 price)
     );
     
     mockSwapData = {
