@@ -1,0 +1,171 @@
+name: Bug Report
+description: Report a bug or issue with the JIT/MEV bot
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! 
+        
+        ⚠️ **SECURITY NOTICE**: Do not include private keys, seed phrases, or any sensitive information in this issue.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
+        - label: I have tested this in simulation mode first
+          required: true
+        - label: No sensitive information (private keys, addresses) is included
+          required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - Critical (Bot is losing funds)
+        - High (Bot is not executing properly)
+        - Medium (Performance issues)
+        - Low (Minor issues)
+      default: 1
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component is affected?
+      options:
+        - LP Calculation
+        - Bundle Manager
+        - Execution Simulation
+        - Pool Manager
+        - Risk Hedging
+        - Logger
+        - Mempool Listener
+        - Gas Utils
+        - Math Utils
+        - Main Entry Point
+        - Tests
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: pool
+    attributes:
+      label: Affected Pool
+      description: Which pool is affected (if applicable)?
+      options:
+        - WETH-USDC-0.05% (0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640)
+        - ETH-USDT-0.3% (0x4e68Ccd3E89f51C3074ca5072bbAC773960dFa36)
+        - WBTC-ETH-0.3% (0xCBCdF9626bC03E24f779434178A73a0B4bad62eD)
+        - All pools
+        - Not pool-specific
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: Describe the bug...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: Expected behavior...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: Actual behavior...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this issue?
+      placeholder: |
+        1. Set configuration...
+        2. Run the bot...
+        3. See error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      description: Please paste any relevant log output
+      render: shell
+      placeholder: Paste logs here...
+
+  - type: input
+    id: version
+    attributes:
+      label: Bot Version
+      description: Which version of the bot are you using?
+      placeholder: e.g. v1.0.0
+
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Execution Mode
+      description: Are you running in simulation or live mode?
+      options:
+        - Simulation Mode
+        - Live Mode (Testnet)
+        - Live Mode (Mainnet)
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Details
+      description: Provide details about your environment
+      placeholder: |
+        - OS: 
+        - Node.js version: 
+        - Network: 
+        - RPC Provider: 
+        - Gas Price: 
+    validations:
+      required: true
+
+  - type: textarea
+    id: financial-impact
+    attributes:
+      label: Financial Impact
+      description: Has this bug caused any financial loss? (Provide amount if safe to share)
+      placeholder: |
+        - Estimated loss: 
+        - Transaction hashes (if applicable): 
+        - Time of occurrence: 
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here
+      placeholder: Any additional information...

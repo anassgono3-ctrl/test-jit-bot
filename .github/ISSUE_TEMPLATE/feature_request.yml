@@ -1,0 +1,155 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for the JIT/MEV bot
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! 
+        
+        ⚠️ **SECURITY NOTICE**: Do not include private keys, seed phrases, or any sensitive information in this issue.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
+        - label: This feature aligns with the bot's MEV/JIT objectives
+          required: true
+        - label: I have considered the security implications
+          required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Feature Category
+      description: What type of feature is this?
+      options:
+        - Performance Optimization
+        - New Strategy
+        - Risk Management
+        - Security Enhancement
+        - Monitoring & Analytics
+        - Pool Support
+        - Gas Optimization
+        - User Interface
+        - Testing & Simulation
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature?
+      options:
+        - Critical (Essential for profitable operation)
+        - High (Would significantly improve performance)
+        - Medium (Nice to have improvement)
+        - Low (Minor enhancement)
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve?
+      placeholder: |
+        Describe the current limitation or problem that this feature would address...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: What would you like to see implemented?
+      placeholder: |
+        Describe your proposed solution in detail...
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Expected Benefits
+      description: How would this feature improve the bot?
+      placeholder: |
+        - Increased profitability by X%
+        - Reduced gas costs
+        - Better risk management
+        - Faster execution
+        - etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Implementation Ideas
+      description: Do you have ideas on how this could be implemented?
+      placeholder: |
+        - Technical approach
+        - Required dependencies
+        - Configuration changes
+        - etc.
+
+  - type: dropdown
+    id: pools
+    attributes:
+      label: Pool Impact
+      description: Which pools would this feature affect?
+      options:
+        - WETH-USDC-0.05% only
+        - ETH-USDT-0.3% only  
+        - WBTC-ETH-0.3% only
+        - All current pools
+        - New pools
+        - Not pool-specific
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risk Assessment
+      description: What risks might this feature introduce?
+      placeholder: |
+        - Security risks
+        - Financial risks
+        - Performance risks
+        - Complexity risks
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered alternative approaches?
+      placeholder: |
+        Describe any alternative solutions you've considered...
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples/References
+      description: Are there examples of this feature elsewhere?
+      placeholder: |
+        - Similar implementations
+        - Research papers
+        - Industry standards
+        - etc.
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context about the feature request
+      placeholder: Any additional information...
